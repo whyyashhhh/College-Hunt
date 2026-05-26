@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { RadarChart, Radar, PolarGrid, PolarAngleAxis, ResponsiveContainer, Tooltip, BarChart, Bar, XAxis, YAxis, CartesianGrid } from 'recharts';
+import { RadarChart, Radar, PolarGrid, PolarAngleAxis, ResponsiveContainer, Tooltip, BarChart, Bar, XAxis, YAxis, CartesianGrid, Legend } from 'recharts';
 import { ArrowLeft, ArrowRightLeft, CheckCircle2, Sparkles } from 'lucide-react';
 import { getCompareIds } from '@/lib/storage';
 import { compareFields } from '@/lib/college-utils';
@@ -83,23 +83,23 @@ export function CompareClient() {
   };
 
   if (loading) {
-    return <div className="rounded-[2rem] border border-white/10 bg-white/5 p-8 text-zinc-200 backdrop-blur-xl">Loading comparison data...</div>;
+    return <div className="rounded-[2rem] border border-slate-200 bg-white p-8 text-zinc-600 shadow-[0_18px_60px_rgba(15,23,42,0.06)]">Loading comparison data...</div>;
   }
 
   if (colleges.length < 2) {
     return (
-      <div className="space-y-6 rounded-[2rem] border border-white/10 bg-white/5 p-8 shadow-2xl shadow-black/20 backdrop-blur-xl">
+      <div className="space-y-6 rounded-[2rem] border border-slate-200 bg-white p-8 shadow-[0_18px_60px_rgba(15,23,42,0.06)]">
         <div className="space-y-2">
-          <h2 className="text-2xl font-semibold text-white">Add at least 2 colleges to compare.</h2>
-          <p className="text-zinc-400">Use the compare button on the home page cards to build a list of 2 to 4 colleges.</p>
+          <h2 className="text-2xl font-semibold text-zinc-950">Add at least 2 colleges to compare.</h2>
+          <p className="text-zinc-600">Use the compare button on the home page cards to build a list of 2 to 4 colleges.</p>
         </div>
         <div className="flex flex-wrap gap-3">
-          <Link href="/" className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-semibold text-zinc-950">
+          <Link href="/" className="inline-flex items-center gap-2 rounded-full bg-zinc-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-brand-600">
             <ArrowLeft className="h-4 w-4" />
             Go to Home
           </Link>
           {ids.length > 0 ? (
-            <button type="button" onClick={clearAll} className="rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm font-medium text-zinc-200">
+            <button type="button" onClick={clearAll} className="rounded-full border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-zinc-700 transition hover:border-brand-200 hover:bg-brand-50 hover:text-brand-700">
               Clear compare list
             </button>
           ) : null}
@@ -109,38 +109,38 @@ export function CompareClient() {
   }
 
   return (
-    <div className="space-y-6 text-zinc-100">
-      <div className="flex flex-wrap items-center justify-between gap-3">
+    <div className="space-y-6 text-zinc-900">
+      <div className="flex flex-wrap items-center justify-between gap-3 rounded-[2rem] border border-slate-200 bg-white p-5 shadow-[0_18px_60px_rgba(15,23,42,0.06)]">
         <div>
-          <p className="text-xs uppercase tracking-[0.26em] text-cyan-300">Comparison dashboard</p>
-          <h1 className="mt-2 text-3xl font-semibold text-white">Compare Colleges</h1>
-          <p className="mt-2 text-zinc-400">Best values are highlighted automatically across the selected colleges.</p>
+          <p className="text-xs uppercase tracking-[0.26em] text-zinc-500">Comparison dashboard</p>
+          <h1 className="mt-2 text-3xl font-semibold text-zinc-950">Compare Colleges</h1>
+          <p className="mt-2 text-zinc-600">Best values are highlighted automatically across the selected colleges.</p>
         </div>
         <div className="flex items-center gap-3">
           <button
             type="button"
             onClick={() => setDifferencesOnly((current) => !current)}
-            className="rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm font-medium text-zinc-200 transition hover:border-cyan-400/30 hover:bg-cyan-400/10"
+            className="rounded-full border border-slate-200 bg-slate-50 px-5 py-3 text-sm font-semibold text-zinc-700 transition hover:border-brand-200 hover:bg-brand-50 hover:text-brand-700"
           >
             {differencesOnly ? 'Show all metrics' : 'Differences only'}
           </button>
-          <button type="button" onClick={clearAll} className="rounded-full bg-white px-5 py-3 text-sm font-semibold text-zinc-950 transition hover:scale-[1.01]">
+          <button type="button" onClick={clearAll} className="rounded-full bg-zinc-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-brand-600">
             Clear list
           </button>
         </div>
       </div>
 
       <div className="grid gap-6 xl:grid-cols-[1.15fr_0.85fr]">
-        <div className="space-y-6 rounded-[2rem] border border-white/10 bg-white/5 p-4 shadow-2xl shadow-black/20 backdrop-blur-xl md:p-6">
+        <div className="space-y-6 rounded-[2rem] border border-slate-200 bg-white p-4 shadow-[0_18px_60px_rgba(15,23,42,0.06)] md:p-6">
           <div className="overflow-x-auto">
             <table className="min-w-full border-separate border-spacing-y-3 text-left text-sm">
               <thead>
-                <tr className="text-zinc-400">
-                  <th className="sticky left-0 z-10 bg-zinc-950 px-4 py-3 font-semibold">Metric</th>
+                <tr className="text-zinc-500">
+                  <th className="sticky left-0 z-10 bg-white px-4 py-3 font-semibold">Metric</th>
                   {colleges.map((college) => (
                     <th key={college.id} className="px-4 py-3 font-semibold">
-                      <div className="rounded-2xl border border-white/10 bg-zinc-950/80 p-4">
-                        <p className="text-white">{college.name}</p>
+                      <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm">
+                        <p className="text-zinc-950">{college.name}</p>
                         <p className="mt-1 text-xs text-zinc-500">
                           {college.city}, {college.state}
                         </p>
@@ -154,7 +154,7 @@ export function CompareClient() {
                   .filter((field) => !differencesOnly || field.key !== 'nirfRank' || new Set(colleges.map((college) => college.nirfRank)).size > 1)
                   .map((field) => (
                     <tr key={field.key}>
-                      <td className="sticky left-0 z-10 px-4 py-3 font-semibold text-zinc-300">{field.label}</td>
+                      <td className="sticky left-0 z-10 bg-white px-4 py-3 font-semibold text-zinc-700">{field.label}</td>
                       {colleges.map((college, index) => {
                         const isBest = bestValues[field.key]?.includes(index) ?? false;
                         const value = college[field.key];
@@ -173,7 +173,7 @@ export function CompareClient() {
                           <td key={college.id} className="px-4 py-3 align-top">
                             <div
                               className={`rounded-2xl border px-4 py-3 ${
-                                isBest ? 'border-cyan-400/30 bg-cyan-400/10 text-cyan-100' : 'border-white/10 bg-zinc-950/70 text-zinc-200'
+                                isBest ? 'border-brand-200 bg-brand-50 text-brand-800' : 'border-slate-200 bg-slate-50 text-zinc-700'
                               }`}
                             >
                               <p className="font-semibold">{formatted}</p>
@@ -185,17 +185,17 @@ export function CompareClient() {
                     </tr>
                   ))}
                 <tr>
-                  <td className="sticky left-0 z-10 px-4 py-3 font-semibold text-zinc-300">Type</td>
+                  <td className="sticky left-0 z-10 bg-white px-4 py-3 font-semibold text-zinc-700">Type</td>
                   {colleges.map((college) => (
-                    <td key={college.id} className="px-4 py-3 text-zinc-300">
+                    <td key={college.id} className="px-4 py-3 text-zinc-600">
                       {college.type}
                     </td>
                   ))}
                 </tr>
                 <tr>
-                  <td className="sticky left-0 z-10 px-4 py-3 font-semibold text-zinc-300">Stream</td>
+                  <td className="sticky left-0 z-10 bg-white px-4 py-3 font-semibold text-zinc-700">Stream</td>
                   {colleges.map((college) => (
-                    <td key={college.id} className="px-4 py-3 text-zinc-300">
+                    <td key={college.id} className="px-4 py-3 text-zinc-600">
                       {college.stream}
                     </td>
                   ))}
@@ -205,31 +205,31 @@ export function CompareClient() {
           </div>
           <div className="grid gap-4 md:grid-cols-2">
             {metricTrend.length > 0 ? (
-              <div className="rounded-[1.5rem] border border-white/10 bg-zinc-950/70 p-4">
+              <div className="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-4">
                 <p className="text-xs uppercase tracking-[0.22em] text-zinc-500">Placement trend</p>
                 <div className="mt-3 h-64">
                   <ResponsiveContainer width="100%" height="100%">
                     <BarChart data={metricTrend}>
-                      <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.08)" />
-                      <XAxis dataKey="name" tick={{ fill: '#a1a1aa', fontSize: 11 }} />
-                      <YAxis tick={{ fill: '#a1a1aa', fontSize: 11 }} />
-                      <Tooltip contentStyle={{ background: '#09090b', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 16, color: '#fff' }} />
-                      <Bar dataKey="placement" fill="#22d3ee" radius={[10, 10, 0, 0]} />
+                      <CartesianGrid strokeDasharray="3 3" stroke="rgba(15,23,42,0.08)" />
+                      <XAxis dataKey="name" tick={{ fill: '#64748b', fontSize: 11 }} />
+                      <YAxis tick={{ fill: '#64748b', fontSize: 11 }} />
+                      <Tooltip contentStyle={{ background: '#ffffff', border: '1px solid rgba(15,23,42,0.08)', borderRadius: 16, color: '#0f172a' }} />
+                      <Bar dataKey="placement" fill="#2563eb" radius={[10, 10, 0, 0]} />
                     </BarChart>
                   </ResponsiveContainer>
                 </div>
               </div>
             ) : null}
             {radarData.length > 0 ? (
-              <div className="rounded-[1.5rem] border border-white/10 bg-zinc-950/70 p-4">
+              <div className="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-4">
                 <p className="text-xs uppercase tracking-[0.22em] text-zinc-500">Radar overview</p>
                 <div className="mt-3 h-64">
                   <ResponsiveContainer width="100%" height="100%">
                     <RadarChart data={radarData[0] ? Object.entries(radarData[0]).filter(([key]) => key !== 'college').map(([key, value]) => ({ metric: key, value })) : []}>
-                      <PolarGrid stroke="rgba(255,255,255,0.1)" />
-                      <PolarAngleAxis dataKey="metric" tick={{ fill: '#a1a1aa', fontSize: 11 }} />
-                      <Radar dataKey="value" stroke="#8b5cf6" fill="#8b5cf6" fillOpacity={0.28} />
-                      <Tooltip contentStyle={{ background: '#09090b', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 16, color: '#fff' }} />
+                      <PolarGrid stroke="rgba(15,23,42,0.08)" />
+                      <PolarAngleAxis dataKey="metric" tick={{ fill: '#64748b', fontSize: 11 }} />
+                      <Radar dataKey="value" stroke="#2563eb" fill="#60a5fa" fillOpacity={0.28} />
+                      <Tooltip contentStyle={{ background: '#ffffff', border: '1px solid rgba(15,23,42,0.08)', borderRadius: 16, color: '#0f172a' }} />
                     </RadarChart>
                   </ResponsiveContainer>
                 </div>
@@ -238,23 +238,23 @@ export function CompareClient() {
           </div>
         </div>
 
-        <div className="space-y-4 rounded-[2rem] border border-white/10 bg-white/5 p-5 shadow-2xl shadow-black/20 backdrop-blur-xl md:p-6">
-          <div className="flex items-center gap-2 text-cyan-300">
+        <div className="space-y-4 rounded-[2rem] border border-slate-200 bg-white p-5 shadow-[0_18px_60px_rgba(15,23,42,0.06)] md:p-6">
+          <div className="flex items-center gap-2 text-brand-700">
             <Sparkles className="h-4 w-4" />
             <p className="text-xs uppercase tracking-[0.24em]">Insights</p>
           </div>
           {colleges.map((college) => (
-            <div key={college.id} className="rounded-[1.5rem] border border-white/10 bg-zinc-950/70 p-5">
+            <div key={college.id} className="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5">
               <div className="flex items-center justify-between gap-3">
                 <div>
-                  <h3 className="text-lg font-semibold text-white">{college.name}</h3>
-                  <p className="text-sm text-zinc-400">{college.city}, {college.state}</p>
+                  <h3 className="text-lg font-semibold text-zinc-950">{college.name}</h3>
+                  <p className="text-sm text-zinc-500">{college.city}, {college.state}</p>
                 </div>
-                <div className="rounded-2xl border border-cyan-400/20 bg-cyan-400/10 px-3 py-2 text-sm font-semibold text-cyan-100">
+                <div className="rounded-2xl border border-brand-200 bg-brand-50 px-3 py-2 text-sm font-semibold text-brand-700">
                   {percentage(college.placementPct)}
                 </div>
               </div>
-              <div className="mt-4 space-y-2 text-sm text-zinc-300">
+              <div className="mt-4 space-y-2 text-sm text-zinc-600">
                 <div className="flex items-center justify-between"><span>Fees</span><span>{rupee(college.fees)}</span></div>
                 <div className="flex items-center justify-between"><span>Avg package</span><span>{rupee(college.avgPackage)}</span></div>
                 <div className="flex items-center justify-between"><span>NIRF</span><span>{college.nirfRank ? `#${college.nirfRank}` : 'N/A'}</span></div>

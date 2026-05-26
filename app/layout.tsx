@@ -44,11 +44,11 @@ export const viewport = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} ${spaceGrotesk.variable} bg-zinc-950 text-zinc-100 antialiased`}>
+      <body className={`${inter.variable} ${spaceGrotesk.variable} bg-[#f7f4ee] text-zinc-900 antialiased`}>
         <AnimatedBackground />
         <div className="relative z-10 flex min-h-screen flex-col">
           <Navbar />
-          <main className="mx-auto w-full max-w-7xl flex-1 px-4 py-6 sm:px-6 lg:px-8 lg:py-10">
+          <main className="mx-auto w-full max-w-[1440px] flex-1 px-4 py-6 sm:px-6 lg:px-8 lg:py-10">
             {children}
           </main>
           <Footer />

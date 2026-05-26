@@ -3,15 +3,15 @@
 @tailwind utilities;
 
 :root {
-  --background: 240 10% 4%;
-  --foreground: 210 40% 98%;
-  --card: 240 8% 8%;
-  --card-foreground: 210 40% 98%;
-  --muted: 240 4% 16%;
-  --muted-foreground: 240 5% 64%;
-  --border: 240 6% 20%;
-  --accent: 190 95% 45%;
-  --accent-foreground: 240 10% 4%;
+  --background: 38 40% 96%;
+  --foreground: 222 47% 11%;
+  --card: 0 0% 100%;
+  --card-foreground: 222 47% 11%;
+  --muted: 42 18% 90%;
+  --muted-foreground: 215 16% 47%;
+  --border: 214 20% 88%;
+  --accent: 187 86% 43%;
+  --accent-foreground: 0 0% 100%;
 }
 
 * {
@@ -25,9 +25,14 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  background: hsl(var(--background));
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.92), transparent 32%),
+    radial-gradient(circle at top right, rgba(219, 234, 254, 0.48), transparent 24%),
+    linear-gradient(180deg, #fbf8f2 0%, #f5f1ea 45%, #f7f4ee 100%);
   color: hsl(var(--foreground));
   font-family: var(--font-inter), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 h1,
@@ -44,8 +49,15 @@ a {
   text-decoration: none;
 }
 
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
 ::selection {
-  background: rgba(34, 211, 238, 0.24);
+  background: rgba(47, 122, 247, 0.18);
 }
 
 ::-webkit-scrollbar {
@@ -53,10 +65,10 @@ a {
 }
 
 ::-webkit-scrollbar-track {
-  background: #09090b;
+  background: #f3efe9;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, rgba(34, 211, 238, 0.5), rgba(139, 92, 246, 0.5));
+  background: linear-gradient(180deg, rgba(47, 122, 247, 0.45), rgba(14, 165, 233, 0.45));
   border-radius: 999px;
 }

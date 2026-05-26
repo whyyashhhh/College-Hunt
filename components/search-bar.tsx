@@ -1,7 +1,8 @@
 "use client";
 
 import type { ChangeEvent } from 'react';
-import { Search, SlidersHorizontal } from 'lucide-react';
+import { IndianRupee, Search, SlidersHorizontal } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export type FilterOption = 'All' | 'Engineering' | 'Medical' | 'MBA' | 'Government' | 'Private';
 
@@ -10,41 +11,99 @@ type Props = {
   city: string;
   stream: 'All' | 'Engineering' | 'Medical' | 'MBA';
   type: 'All' | 'Government' | 'Private';
+  maxFees: number;
   onQueryChange: (value: string) => void;
   onCityChange: (value: string) => void;
   onStreamChange: (value: 'All' | 'Engineering' | 'Medical' | 'MBA') => void;
   onTypeChange: (value: 'All' | 'Government' | 'Private') => void;
+  onMaxFeesChange: (value: number) => void;
+  onSearch: () => void;
 };
 
 const streams = ['All', 'Engineering', 'Medical', 'MBA'] as const;
 const types = ['All', 'Government', 'Private'] as const;
 
-export function SearchBar({ query, city, stream, type, onQueryChange, onCityChange, onStreamChange, onTypeChange }: Props) {
+const formatCurrency = (value: number) => {
+  if (value >= 100000) {
+    return `₹${Math.round(value / 100000)}L`;
+  }
+
+  return `₹${value.toLocaleString('en-IN')}`;
+};
+
+export function SearchBar({
+  query,
+  city,
+  stream,
+  type,
+  maxFees,
+  onQueryChange,
+  onCityChange,
+  onStreamChange,
+  onTypeChange,
+  onMaxFeesChange,
+  onSearch
+}: Props) {
   return (
-    <section className="rounded-[1.75rem] border border-white/10 bg-white/5 p-4 shadow-2xl shadow-black/20 backdrop-blur-xl md:p-6">
-      <div className="grid gap-4 lg:grid-cols-[1.4fr_0.8fr_0.8fr_0.8fr]">
-        <label className="flex items-center gap-3 rounded-2xl border border-white/10 bg-zinc-950/60 px-4 py-3 text-zinc-200 transition focus-within:border-cyan-400/50 focus-within:ring-1 focus-within:ring-cyan-400/40">
+    <section className="rounded-[2rem] border border-slate-200/80 bg-white p-4 shadow-[0_24px_80px_rgba(15,23,42,0.08)] md:p-5">
+      <div className="grid gap-3 xl:grid-cols-[1.4fr_0.95fr_0.75fr_0.75fr_0.9fr_auto]">
+        <label className="flex items-center gap-3 rounded-full border border-slate-200 bg-slate-50 px-4 py-3 text-zinc-800 transition focus-within:border-brand-200 focus-within:bg-white focus-within:ring-4 focus-within:ring-brand-100/70">
           <Search className="h-4 w-4 text-cyan-300" />
           <input
             value={query}
             onChange={(event: ChangeEvent<HTMLInputElement>) => onQueryChange(event.target.value)}
             placeholder="Search by college name"
-            className="w-full bg-transparent text-sm outline-none placeholder:text-zinc-500"
+            className="w-full bg-transparent text-sm outline-none placeholder:text-zinc-400"
           />
         </label>
 
-        <label className="flex items-center gap-3 rounded-2xl border border-white/10 bg-zinc-950/60 px-4 py-3 text-zinc-200 transition focus-within:border-cyan-400/50 focus-within:ring-1 focus-within:ring-cyan-400/40">
+        <label className="flex items-center gap-3 rounded-full border border-slate-200 bg-slate-50 px-4 py-3 text-zinc-800 transition focus-within:border-brand-200 focus-within:bg-white focus-within:ring-4 focus-within:ring-brand-100/70">
           <SlidersHorizontal className="h-4 w-4 text-violet-300" />
           <input
             value={city}
             onChange={(event: ChangeEvent<HTMLInputElement>) => onCityChange(event.target.value)}
             placeholder="City"
-            className="w-full bg-transparent text-sm outline-none placeholder:text-zinc-500"
+            className="w-full bg-transparent text-sm outline-none placeholder:text-zinc-400"
           />
         </label>
 
         <Select value={stream} onChange={(event) => onStreamChange(event.target.value as typeof stream)} options={streams} />
         <Select value={type} onChange={(event) => onTypeChange(event.target.value as typeof type)} options={types} />
+
+        <label className="flex items-center gap-3 rounded-full border border-slate-200 bg-slate-50 px-4 py-3 text-zinc-800 transition focus-within:border-brand-200 focus-within:bg-white focus-within:ring-4 focus-within:ring-brand-100/70">
+          <IndianRupee className="h-4 w-4 text-amber-500" />
+          <div className="w-full">
+            <div className="flex items-center justify-between gap-3 text-xs text-zinc-500">
+              <span>Max fees</span>
+              <span className="font-semibold text-zinc-700">{formatCurrency(maxFees)}</span>
+            </div>
+            <input
+              type="range"
+              min={500000}
+              max={5000000}
+              step={50000}
+              value={maxFees}
+              onChange={(event) => onMaxFeesChange(Number(event.target.value))}
+              className="mt-3 h-1.5 w-full cursor-pointer appearance-none rounded-full bg-slate-200 accent-brand-600"
+            />
+          </div>
+        </label>
+
+        <motion.button
+          type="button"
+          whileHover={{ y: -1, scale: 1.01 }}
+          whileTap={{ scale: 0.98 }}
+          onClick={onSearch}
+          className="inline-flex items-center justify-center gap-2 rounded-full bg-zinc-900 px-5 py-3 text-sm font-semibold text-white shadow-[0_16px_40px_rgba(15,23,42,0.18)] transition hover:bg-brand-600"
+        >
+          <Search className="h-4 w-4" />
+          Explore
+        </motion.button>
+      </div>
+
+      <div className="mt-4 flex flex-wrap items-center justify-between gap-3 text-sm text-zinc-500">
+        <span>Filters update instantly as you type.</span>
+        <span>Budget cap set to {formatCurrency(maxFees)}.</span>
       </div>
     </section>
   );
@@ -52,10 +111,10 @@ export function SearchBar({ query, city, stream, type, onQueryChange, onCityChan
 
 function Select({ value, onChange, options }: { value: string; onChange: (event: ChangeEvent<HTMLSelectElement>) => void; options: readonly string[] }) {
   return (
-    <div className="rounded-2xl border border-white/10 bg-zinc-950/60 px-4 py-3 text-zinc-200 transition focus-within:border-cyan-400/50 focus-within:ring-1 focus-within:ring-cyan-400/40">
+    <div className="rounded-full border border-slate-200 bg-slate-50 px-4 py-3 text-zinc-800 transition focus-within:border-brand-200 focus-within:bg-white focus-within:ring-4 focus-within:ring-brand-100/70">
       <select value={value} onChange={onChange} className="w-full bg-transparent text-sm outline-none">
         {options.map((option) => (
-          <option key={option} className="bg-zinc-950 text-white">
+          <option key={option} className="bg-white text-zinc-900">
             {option}
           </option>
         ))}

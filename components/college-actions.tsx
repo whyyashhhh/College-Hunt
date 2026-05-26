@@ -1,6 +1,7 @@
 "use client";
 
 import { addCompareId, addShortlistId, getOrCreateUserId } from '@/lib/storage';
+import { BookmarkPlus, GitCompareArrows, ArrowRight } from 'lucide-react';
 
 type Props = {
   collegeId: string;
@@ -27,27 +28,31 @@ export function CollegeActions({ collegeId }: Props) {
       <button
         type="button"
         onClick={shortlist}
-        className="inline-flex items-center justify-center rounded-full bg-slate-950 px-5 py-3 text-sm font-medium text-white transition hover:bg-slate-800"
+        className="inline-flex items-center justify-center gap-2 rounded-full bg-zinc-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-brand-600"
       >
+        <BookmarkPlus className="h-4 w-4" />
         Add to Shortlist
       </button>
       <button
         type="button"
         onClick={() => addCompareId(collegeId)}
-        className="inline-flex items-center justify-center rounded-full border border-slate-200 px-5 py-3 text-sm font-medium text-slate-700 transition hover:border-brand-300 hover:bg-brand-50 hover:text-brand-700"
+        className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-zinc-700 transition hover:border-brand-200 hover:bg-brand-50 hover:text-brand-700"
       >
+        <GitCompareArrows className="h-4 w-4" />
         Add to Compare
       </button>
       <a
         href="/compare"
-        className="inline-flex items-center justify-center rounded-full border border-slate-200 px-5 py-3 text-sm font-medium text-slate-700 transition hover:border-brand-300 hover:bg-brand-50 hover:text-brand-700"
+        className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-zinc-700 transition hover:border-brand-200 hover:bg-brand-50 hover:text-brand-700"
       >
+        <ArrowRight className="h-4 w-4" />
         Open Compare
       </a>
       <a
         href="/shortlist"
-        className="inline-flex items-center justify-center rounded-full border border-slate-200 px-5 py-3 text-sm font-medium text-slate-700 transition hover:border-brand-300 hover:bg-brand-50 hover:text-brand-700"
+        className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-zinc-700 transition hover:border-brand-200 hover:bg-brand-50 hover:text-brand-700"
       >
+        <ArrowRight className="h-4 w-4" />
         Open Shortlist
       </a>
     </div>
