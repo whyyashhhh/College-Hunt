@@ -48,39 +48,39 @@ export function CollegeDetailClient({ college }: Props) {
     <div className="space-y-8 text-zinc-900">
       <section className="grid gap-6 xl:grid-cols-[1.2fr_0.8fr] xl:items-start">
         <div className="space-y-6">
-          <div className="grid gap-4 md:grid-cols-[1.15fr_0.85fr]">
-            <div className="grid min-h-[420px] grid-cols-2 gap-4 rounded-[2rem] border border-slate-200 bg-white p-4 shadow-[0_18px_60px_rgba(15,23,42,0.08)]">
-              <div className="col-span-2 rounded-[1.75rem] bg-[radial-gradient(circle_at_top_left,rgba(47,122,247,0.24),transparent_32%),radial-gradient(circle_at_bottom_right,rgba(245,158,11,0.18),transparent_26%),linear-gradient(135deg,#eef5ff,#fff)] p-5 text-zinc-900">
+          <div className="grid gap-4 2xl:grid-cols-[1.15fr_0.85fr]">
+            <div className="grid min-h-[420px] grid-cols-2 gap-4 rounded-[2rem] border border-slate-200 bg-white p-4 shadow-[0_18px_60px_rgba(15,23,42,0.08)] backdrop-blur-xl">
+              <div className="col-span-2 rounded-[1.75rem] bg-[radial-gradient(circle_at_top_left,rgba(244,114,182,0.14),transparent_32%),radial-gradient(circle_at_bottom_right,rgba(251,146,60,0.12),transparent_26%),linear-gradient(135deg,rgba(255,255,255,0.9),rgba(248,250,252,0.95))] p-5 text-zinc-900">
                 <div className="flex items-center justify-between gap-3">
                   <CollegeBadges stream={college.stream} type={college.type} />
-                  <div className="rounded-full border border-white/70 bg-white/90 px-3 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-zinc-600 shadow-sm">
+                  <div className="rounded-full border border-slate-200 bg-slate-50 px-3 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-zinc-600 shadow-sm">
                     {college.nirfRank ? `#${college.nirfRank}` : 'Ranked'}
                   </div>
                 </div>
                 <div className="mt-10 grid gap-4 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
                   <div>
                     <p className="text-xs uppercase tracking-[0.26em] text-zinc-500">Campus preview</p>
-                    <h1 className="mt-3 text-4xl font-semibold tracking-tight text-zinc-950 sm:text-5xl">{college.name}</h1>
+                    <h1 className="mt-3 text-4xl font-semibold tracking-tight text-zinc-900 sm:text-5xl">{college.name}</h1>
                     <p className="mt-3 max-w-2xl text-base leading-7 text-zinc-600">
                       {college.city}, {college.state}. A modern property-page style view for fees, placements, courses, and admissions.
                     </p>
                   </div>
                   <div className="grid grid-cols-2 gap-3">
-                    <div className="rounded-[1.25rem] border border-white/70 bg-white/90 p-4 shadow-sm">
-                      <p className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Placement</p>
-                      <p className="mt-2 text-2xl font-semibold text-zinc-950">{percentage(college.placementPct)}</p>
+                    <div className="min-w-0 rounded-[1.25rem] border border-slate-200 bg-slate-50 p-4 shadow-sm">
+                      <p className="text-[10px] uppercase tracking-[0.14em] leading-tight text-zinc-500">Placement</p>
+                      <p className="mt-2 text-xl font-semibold leading-none text-zinc-900 sm:text-2xl">{percentage(college.placementPct)}</p>
                     </div>
-                    <div className="rounded-[1.25rem] border border-white/70 bg-white/90 p-4 shadow-sm">
-                      <p className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Avg package</p>
-                      <p className="mt-2 text-2xl font-semibold text-zinc-950">{rupee(college.avgPackage)}</p>
+                    <div className="min-w-0 rounded-[1.25rem] border border-slate-200 bg-slate-50 p-4 shadow-sm">
+                      <p className="text-[10px] uppercase tracking-[0.14em] leading-tight text-zinc-500">Avg package</p>
+                      <p className="mt-2 text-xl font-semibold leading-none text-zinc-900 sm:text-2xl">{rupee(college.avgPackage)}</p>
                     </div>
-                    <div className="rounded-[1.25rem] border border-white/70 bg-white/90 p-4 shadow-sm">
-                      <p className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Fees</p>
-                      <p className="mt-2 text-2xl font-semibold text-zinc-950">{rupee(college.fees)}</p>
+                    <div className="min-w-0 rounded-[1.25rem] border border-slate-200 bg-slate-50 p-4 shadow-sm">
+                      <p className="text-[10px] uppercase tracking-[0.14em] leading-tight text-zinc-500">Fees</p>
+                      <p className="mt-2 text-xl font-semibold leading-none text-zinc-900 sm:text-2xl">{rupee(college.fees)}</p>
                     </div>
-                    <div className="rounded-[1.25rem] border border-white/70 bg-white/90 p-4 shadow-sm">
-                      <p className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Courses</p>
-                      <p className="mt-2 text-2xl font-semibold text-zinc-950">{compactNumber(college.courses.length)}</p>
+                    <div className="min-w-0 rounded-[1.25rem] border border-slate-200 bg-slate-50 p-4 shadow-sm">
+                      <p className="text-[10px] uppercase tracking-[0.14em] leading-tight text-zinc-500">Courses</p>
+                      <p className="mt-2 text-xl font-semibold leading-none text-zinc-900 sm:text-2xl">{compactNumber(college.courses.length)}</p>
                     </div>
                   </div>
                 </div>
@@ -94,7 +94,7 @@ export function CollegeDetailClient({ college }: Props) {
               ].map((item) => (
                 <div key={item.title} className={`rounded-[1.5rem] border border-slate-200 bg-gradient-to-br ${item.tone} p-4 shadow-sm`}>
                   <p className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">{item.title}</p>
-                  <p className="mt-3 text-2xl font-semibold text-zinc-950">{item.value}</p>
+                  <p className="mt-3 text-2xl font-semibold text-zinc-900">{item.value}</p>
                 </div>
               ))}
             </div>
@@ -104,7 +104,7 @@ export function CollegeDetailClient({ college }: Props) {
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.4 }}
-                className="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-[0_18px_60px_rgba(15,23,42,0.08)]"
+                className="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-[0_18px_60px_rgba(15,23,42,0.08)] backdrop-blur-xl"
               >
                 <p className="text-sm font-semibold uppercase tracking-[0.22em] text-zinc-500">Quick actions</p>
                 <div className="mt-5">
@@ -131,7 +131,7 @@ export function CollegeDetailClient({ college }: Props) {
                 <TabsTrigger
                   key={item}
                   value={item}
-                  className="rounded-full px-4 py-2 text-sm font-medium text-zinc-500 transition data-[state=active]:bg-zinc-900 data-[state=active]:text-white"
+                  className="rounded-full px-4 py-2 text-sm font-medium text-zinc-500 transition data-[state=active]:bg-white data-[state=active]:text-zinc-900"
                 >
                   {item}
                 </TabsTrigger>
@@ -144,7 +144,7 @@ export function CollegeDetailClient({ college }: Props) {
                 <MiniStat label="Stream" value={college.stream} />
                 <MiniStat label="Location" value={`${college.city}, ${college.state}`} />
               </div>
-              <div className="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5">
+                <div className="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5">
                 <p className="text-xs uppercase tracking-[0.22em] text-zinc-500">Overview</p>
                 <p className="mt-3 max-w-2xl text-sm leading-7 text-zinc-600">
                   Use shortlist and compare actions to build a focused application plan with fee and placement context.
@@ -154,13 +154,13 @@ export function CollegeDetailClient({ college }: Props) {
 
             <TabsContent value="Placements" className="space-y-4 outline-none">
               <div className="grid gap-4 lg:grid-cols-[1.1fr_0.9fr]">
-                <div className="h-[320px] rounded-[1.5rem] border border-slate-200 bg-white p-3">
+                <div className="h-[320px] rounded-[1.5rem] border border-slate-200 bg-slate-50 p-3">
                   <ResponsiveContainer width="100%" height="100%">
                     <RadarChart data={placementData}>
-                      <PolarGrid stroke="rgba(15,23,42,0.08)" />
-                      <PolarAngleAxis dataKey="label" tick={{ fill: '#64748b', fontSize: 12 }} />
-                      <Radar dataKey="value" stroke="#2563eb" fill="#60a5fa" fillOpacity={0.3} />
-                      <Tooltip contentStyle={{ background: '#ffffff', border: '1px solid rgba(15,23,42,0.08)', borderRadius: 16, color: '#0f172a' }} />
+                      <PolarGrid stroke="rgba(148,163,184,0.25)" />
+                      <PolarAngleAxis dataKey="label" tick={{ fill: '#475569', fontSize: 12 }} />
+                      <Radar dataKey="value" stroke="#fb7185" fill="#fb7185" fillOpacity={0.28} />
+                      <Tooltip contentStyle={{ background: '#ffffff', border: '1px solid rgba(148,163,184,0.25)', borderRadius: 16, color: '#0f172a' }} />
                     </RadarChart>
                   </ResponsiveContainer>
                 </div>
@@ -173,7 +173,7 @@ export function CollegeDetailClient({ college }: Props) {
                   ].map((item) => (
                     <div key={item.label} className="rounded-[1.25rem] border border-slate-200 bg-slate-50 p-4">
                       <p className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">{item.label}</p>
-                      <p className="mt-2 text-lg font-semibold text-zinc-950">{item.value}</p>
+                      <p className="mt-2 text-lg font-semibold text-zinc-900">{item.value}</p>
                     </div>
                   ))}
                 </div>
@@ -181,17 +181,17 @@ export function CollegeDetailClient({ college }: Props) {
             </TabsContent>
 
             <TabsContent value="Fees" className="space-y-4 outline-none">
-              <div className="h-[320px] rounded-[1.5rem] border border-slate-200 bg-white p-3">
+              <div className="h-[320px] rounded-[1.5rem] border border-slate-200 bg-slate-50 p-3">
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={barData}>
-                    <CartesianGrid strokeDasharray="3 3" stroke="rgba(15,23,42,0.08)" />
-                    <XAxis dataKey="name" tick={{ fill: '#64748b', fontSize: 11 }} />
-                    <YAxis tick={{ fill: '#64748b', fontSize: 11 }} />
-                    <Tooltip contentStyle={{ background: '#ffffff', border: '1px solid rgba(15,23,42,0.08)', borderRadius: 16, color: '#0f172a' }} />
+                    <CartesianGrid strokeDasharray="3 3" stroke="rgba(148,163,184,0.25)" />
+                    <XAxis dataKey="name" tick={{ fill: '#475569', fontSize: 11 }} />
+                    <YAxis tick={{ fill: '#475569', fontSize: 11 }} />
+                    <Tooltip contentStyle={{ background: '#ffffff', border: '1px solid rgba(148,163,184,0.25)', borderRadius: 16, color: '#0f172a' }} />
                     <Bar dataKey="fees" fill="url(#feesGradient)" radius={[12, 12, 0, 0]} />
                     <defs>
                       <linearGradient id="feesGradient" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stopColor="#2563eb" />
+                        <stop offset="0%" stopColor="#fb7185" />
                         <stop offset="100%" stopColor="#f59e0b" />
                       </linearGradient>
                     </defs>
@@ -211,7 +211,7 @@ export function CollegeDetailClient({ college }: Props) {
                     className="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5"
                   >
                     <p className="text-xs uppercase tracking-[0.22em] text-zinc-500">Course</p>
-                    <h3 className="mt-3 text-lg font-semibold text-zinc-950">{course.name}</h3>
+                    <h3 className="mt-3 text-lg font-semibold text-zinc-900">{course.name}</h3>
                     <div className="mt-4 flex items-center justify-between text-sm text-zinc-600">
                       <span>{course.duration}</span>
                       <span>{rupee(course.fees)}</span>
@@ -225,9 +225,9 @@ export function CollegeDetailClient({ college }: Props) {
               <div className="grid gap-4 lg:grid-cols-[0.95fr_1.05fr]">
                 <div className="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5">
                   <p className="text-xs uppercase tracking-[0.22em] text-zinc-500">Admission predictor</p>
-                  <p className="mt-3 text-3xl font-semibold text-zinc-950">{admissionScore}%</p>
-                  <div className="mt-4 h-2 overflow-hidden rounded-full bg-white">
-                    <div className="h-full rounded-full bg-gradient-to-r from-brand-600 to-sky-500" style={{ width: `${admissionScore}%` }} />
+                  <p className="mt-3 text-3xl font-semibold text-zinc-900">{admissionScore}%</p>
+                  <div className="mt-4 h-2 overflow-hidden rounded-full bg-slate-200">
+                    <div className="h-full rounded-full bg-gradient-to-r from-rose-400 to-amber-300" style={{ width: `${admissionScore}%` }} />
                   </div>
                   <p className="mt-4 text-sm leading-7 text-zinc-600">
                     High placement quality and ranking signals make this college a strong shortlist candidate.
@@ -265,7 +265,7 @@ export function CollegeDetailClient({ college }: Props) {
               <div className="space-y-2">
                 <div className="flex items-center justify-between text-sm text-zinc-600">
                   <span>Admission chance</span>
-                  <span className="font-semibold text-zinc-950">{admissionScore}%</span>
+                  <span className="font-semibold text-zinc-900">{admissionScore}%</span>
                 </div>
                 <div className="h-2 overflow-hidden rounded-full bg-slate-100">
                   <div className="h-full rounded-full bg-gradient-to-r from-brand-600 to-sky-500" style={{ width: `${admissionScore}%` }} />
@@ -284,9 +284,9 @@ export function CollegeDetailClient({ college }: Props) {
               { label: 'Avg package', value: rupee(college.avgPackage) },
               { label: 'NIRF', value: college.nirfRank ? `#${college.nirfRank}` : 'N/A' }
             ].map((item) => (
-              <div key={item.label} className="rounded-[1.5rem] border border-slate-200 bg-white px-5 py-4 shadow-sm">
+              <div key={item.label} className="rounded-[1.5rem] border border-slate-200 bg-slate-50 px-5 py-4 shadow-sm">
                 <p className="text-xs uppercase tracking-[0.22em] text-zinc-500">{item.label}</p>
-                <p className="mt-2 text-lg font-semibold text-zinc-950">{item.value}</p>
+                <p className="mt-2 text-lg font-semibold text-zinc-900">{item.value}</p>
               </div>
             ))}
           </div>

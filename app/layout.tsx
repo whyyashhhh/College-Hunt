@@ -38,13 +38,13 @@ export const metadata: Metadata = {
 };
 
 export const viewport = {
-  themeColor: '#09090b'
+  themeColor: '#ffffff'
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} ${spaceGrotesk.variable} bg-[#f7f4ee] text-zinc-900 antialiased`}>
+      <body className={`${inter.variable} ${spaceGrotesk.variable} bg-white text-zinc-900 antialiased`}>
         <AnimatedBackground />
         <div className="relative z-10 flex min-h-screen flex-col">
           <Navbar />

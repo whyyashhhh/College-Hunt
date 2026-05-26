@@ -11,7 +11,7 @@ const reviews = [
   {
     name: 'Aarav Mehta',
     role: 'Engineering aspirant',
-    quote: 'CollegeHunt feels like a premium travel app for admissions - fast, visual, and surprisingly easy to compare.',
+    quote: 'CollegeHunt keeps the decision process calm, clean, and easy to scan when I compare options.',
     rating: '5.0'
   },
   {
@@ -151,8 +151,8 @@ export function HomeClient() {
 
   return (
     <div className="space-y-12 lg:space-y-16">
-      <section className="relative overflow-hidden rounded-[2.5rem] border border-white/80 bg-white px-6 py-8 shadow-[0_24px_80px_rgba(15,23,42,0.08)] md:px-10 lg:px-12">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(47,122,247,0.12),transparent_26%),radial-gradient(circle_at_bottom_right,rgba(245,158,11,0.14),transparent_24%)]" />
+      <section className="relative overflow-hidden rounded-[2.5rem] border border-slate-200 bg-white px-6 py-8 shadow-[0_24px_80px_rgba(15,23,42,0.08)] md:px-10 lg:px-12">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(59,130,246,0.12),transparent_26%),radial-gradient(circle_at_bottom_right,rgba(251,191,36,0.14),transparent_24%)]" />
         <div className="relative grid gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:items-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -164,8 +164,8 @@ export function HomeClient() {
               Premium college discovery
             </div>
             <div className="space-y-4">
-              <h1 className="max-w-3xl text-5xl font-semibold tracking-tight text-zinc-950 sm:text-6xl lg:text-7xl">
-                Discover colleges with Airbnb-level polish.
+              <h1 className="max-w-3xl text-5xl font-semibold tracking-tight text-zinc-900 sm:text-6xl lg:text-7xl">
+                Discover colleges with a premium, calm, modern experience.
               </h1>
               <p className="max-w-2xl text-base leading-7 text-zinc-600 sm:text-lg">
                 Search, compare, and shortlist Indian colleges through a spacious, premium interface built for fast decisions and calmer browsing.
@@ -175,7 +175,7 @@ export function HomeClient() {
               {heroStats.map((stat) => (
                 <div key={stat.label} className="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-4">
                   <p className="text-[11px] uppercase tracking-[0.2em] text-zinc-500">{stat.label}</p>
-                  <p className="mt-2 text-2xl font-semibold text-zinc-950">{stat.value}</p>
+                  <p className="mt-2 text-2xl font-semibold text-zinc-900">{stat.value}</p>
                 </div>
               ))}
             </div>
@@ -185,34 +185,34 @@ export function HomeClient() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, delay: 0.1 }}
-            className="relative overflow-hidden rounded-[2rem] border border-slate-200 bg-slate-50 p-5 shadow-[0_16px_50px_rgba(15,23,42,0.08)]"
+            className="relative overflow-hidden rounded-[2rem] border border-slate-200 bg-white p-5 shadow-[0_16px_50px_rgba(15,23,42,0.08)] backdrop-blur-xl"
           >
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(47,122,247,0.16),transparent_26%),radial-gradient(circle_at_bottom_right,rgba(14,165,233,0.16),transparent_24%)]" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(244,114,182,0.1),transparent_26%),radial-gradient(circle_at_bottom_right,rgba(251,146,60,0.12),transparent_24%)]" />
             <div className="relative space-y-4">
               <div className="flex items-center justify-between gap-3">
                 <div>
                   <p className="text-xs uppercase tracking-[0.22em] text-zinc-500">Live shortlist</p>
-                  <h2 className="mt-2 text-2xl font-semibold text-zinc-950">{visibleColleges.length} matching colleges</h2>
+                  <h2 className="mt-2 text-2xl font-semibold text-zinc-900">{visibleColleges.length} matching colleges</h2>
                 </div>
-                <div className="rounded-full border border-white bg-white px-3 py-2 text-xs font-semibold text-zinc-600 shadow-sm">
+                <div className="rounded-full border border-slate-200 bg-slate-50 px-3 py-2 text-xs font-semibold text-zinc-700 shadow-sm">
                   {stats[0].value} total
                 </div>
               </div>
 
               <div className="grid gap-3 sm:grid-cols-2">
-                <div className="rounded-[1.5rem] border border-white bg-white p-4 shadow-sm">
+                <div className="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-4 shadow-sm">
                   <p className="text-[11px] uppercase tracking-[0.22em] text-zinc-500">Avg placement</p>
-                  <p className="mt-2 text-2xl font-semibold text-zinc-950">{stats[1].value}</p>
+                  <p className="mt-2 text-2xl font-semibold text-zinc-900">{stats[1].value}</p>
                 </div>
-                <div className="rounded-[1.5rem] border border-white bg-white p-4 shadow-sm">
+                <div className="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-4 shadow-sm">
                   <p className="text-[11px] uppercase tracking-[0.22em] text-zinc-500">Cities covered</p>
-                  <p className="mt-2 text-2xl font-semibold text-zinc-950">{stats[3].value}</p>
+                  <p className="mt-2 text-2xl font-semibold text-zinc-900">{stats[3].value}</p>
                 </div>
               </div>
 
-              <div className="rounded-[1.5rem] border border-white bg-white p-4 shadow-sm">
-                <p className="text-sm font-medium text-zinc-700">Use the search bar below to narrow results instantly.</p>
-                <button type="button" onClick={scrollToResults} className="mt-4 inline-flex rounded-full bg-zinc-900 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-brand-600">
+              <div className="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-4 shadow-sm">
+                <p className="text-sm font-medium text-zinc-600">Use the search bar below to narrow results instantly.</p>
+                <button type="button" onClick={scrollToResults} className="mt-4 inline-flex rounded-full bg-zinc-900 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-zinc-800">
                   Jump to featured colleges
                 </button>
               </div>
@@ -241,21 +241,21 @@ export function HomeClient() {
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <p className="text-xs uppercase tracking-[0.26em] text-zinc-500">Featured colleges</p>
-            <h2 className="mt-2 text-3xl font-semibold tracking-tight text-zinc-950 sm:text-4xl">Premium cards with clear decision signals.</h2>
+            <h2 className="mt-2 text-3xl font-semibold tracking-tight text-zinc-900 sm:text-4xl">Premium cards with clear decision signals.</h2>
           </div>
-          <div className="text-sm text-zinc-500">
+          <div className="text-sm text-zinc-400">
             Showing <span className="font-semibold text-zinc-900">{visibleColleges.length}</span> colleges under your budget cap.
           </div>
         </div>
 
         {notice ? (
-          <div className="rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-700">
+          <div className="rounded-2xl border border-emerald-400/20 bg-emerald-400/10 px-4 py-3 text-sm text-emerald-100">
             {notice}
           </div>
         ) : null}
 
         {error ? (
-          <div className="rounded-2xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-700">
+          <div className="rounded-2xl border border-rose-400/20 bg-rose-400/10 px-4 py-3 text-sm text-rose-100">
             {error}
           </div>
         ) : null}
@@ -263,7 +263,7 @@ export function HomeClient() {
         {loading ? (
           <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
             {Array.from({ length: 6 }).map((_, index) => (
-              <div key={index} className="h-[520px] animate-pulse rounded-[2rem] border border-slate-200 bg-white shadow-[0_18px_60px_rgba(15,23,42,0.06)]" />
+              <div key={index} className="h-[520px] animate-pulse rounded-[2rem] border border-white/10 bg-white/5 shadow-[0_18px_60px_rgba(0,0,0,0.18)]" />
             ))}
           </div>
         ) : featuredColleges.length > 0 ? (
@@ -283,8 +283,8 @@ export function HomeClient() {
             ))}
           </motion.div>
         ) : (
-          <div className="rounded-[2rem] border border-dashed border-slate-300 bg-white p-12 text-center text-zinc-600 shadow-[0_18px_60px_rgba(15,23,42,0.05)]">
-            <h2 className="text-2xl font-semibold text-zinc-950">No colleges matched your filters.</h2>
+          <div className="rounded-[2rem] border border-dashed border-slate-200 bg-slate-50 p-12 text-center text-zinc-500 shadow-[0_18px_60px_rgba(15,23,42,0.08)]">
+            <h2 className="text-2xl font-semibold text-zinc-900">No colleges matched your filters.</h2>
             <p className="mt-3 text-zinc-500">Try widening the city or stream filters, or adjust the budget cap.</p>
           </div>
         )}
@@ -293,7 +293,7 @@ export function HomeClient() {
       <section className="space-y-6">
         <div>
           <p className="text-xs uppercase tracking-[0.26em] text-zinc-500">Trending streams</p>
-          <h2 className="mt-2 text-3xl font-semibold tracking-tight text-zinc-950 sm:text-4xl">See which programs are pulling the strongest colleges.</h2>
+          <h2 className="mt-2 text-3xl font-semibold tracking-tight text-zinc-900 sm:text-4xl">See which programs are pulling the strongest colleges.</h2>
         </div>
 
         <div className="grid gap-4 md:grid-cols-3">
@@ -304,19 +304,19 @@ export function HomeClient() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.4 }}
               transition={{ duration: 0.45, delay: index * 0.06 }}
-              className="rounded-[2rem] border border-slate-200 bg-white p-5 shadow-[0_18px_60px_rgba(15,23,42,0.06)]"
+              className="rounded-[2rem] border border-slate-200 bg-white p-5 shadow-[0_18px_60px_rgba(15,23,42,0.08)]"
             >
               <div className="flex items-center justify-between gap-3">
                 <div>
                   <p className="text-xs uppercase tracking-[0.22em] text-zinc-500">{item.name}</p>
-                  <h3 className="mt-2 text-2xl font-semibold text-zinc-950">{item.count} colleges</h3>
+                  <h3 className="mt-2 text-2xl font-semibold text-zinc-900">{item.count} colleges</h3>
                 </div>
-                <div className="rounded-full bg-brand-50 px-3 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-brand-700">
+                <div className="rounded-full bg-slate-100 px-3 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-zinc-600">
                   {item.averagePlacement ? `${item.averagePlacement.toFixed(1)}% avg` : 'No data'}
                 </div>
               </div>
               <div className="mt-5 rounded-[1.5rem] border border-slate-200 bg-slate-50 p-4">
-                <p className="text-sm font-medium text-zinc-800">
+                <p className="text-sm font-medium text-zinc-600">
                   {item.topMatch ? `${item.topMatch.name} leads this stream with ${percentage(item.topMatch.placementPct)} placement.` : 'No college matches this stream yet.'}
                 </p>
               </div>
@@ -329,9 +329,9 @@ export function HomeClient() {
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <p className="text-xs uppercase tracking-[0.26em] text-zinc-500">Top placement colleges</p>
-            <h2 className="mt-2 text-3xl font-semibold tracking-tight text-zinc-950 sm:text-4xl">High-placement colleges, surfaced first.</h2>
+            <h2 className="mt-2 text-3xl font-semibold tracking-tight text-zinc-900 sm:text-4xl">High-placement colleges, surfaced first.</h2>
           </div>
-          <p className="text-sm text-zinc-500">Sorted by placement percentage</p>
+          <p className="text-sm text-zinc-400">Sorted by placement percentage</p>
         </div>
 
         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
@@ -355,7 +355,7 @@ export function HomeClient() {
       <section className="space-y-6">
         <div>
           <p className="text-xs uppercase tracking-[0.26em] text-zinc-500">Student reviews</p>
-          <h2 className="mt-2 text-3xl font-semibold tracking-tight text-zinc-950 sm:text-4xl">The new experience should feel as easy as booking a stay.</h2>
+            <h2 className="mt-2 text-3xl font-semibold tracking-tight text-zinc-900 sm:text-4xl">Students should get clarity, not clutter.</h2>
         </div>
 
         <div className="grid gap-4 lg:grid-cols-3">
@@ -366,14 +366,14 @@ export function HomeClient() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.4 }}
               transition={{ duration: 0.45, delay: index * 0.06 }}
-              className="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-[0_18px_60px_rgba(15,23,42,0.06)]"
+              className="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-[0_18px_60px_rgba(15,23,42,0.08)]"
             >
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <p className="text-lg font-semibold text-zinc-950">{review.name}</p>
+                  <p className="text-lg font-semibold text-zinc-900">{review.name}</p>
                   <p className="text-sm text-zinc-500">{review.role}</p>
                 </div>
-                <div className="rounded-full bg-brand-50 px-3 py-2 text-sm font-semibold text-brand-700">{review.rating}</div>
+                <div className="rounded-full bg-slate-100 px-3 py-2 text-sm font-semibold text-zinc-700">{review.rating}</div>
               </div>
               <p className="mt-5 text-base leading-7 text-zinc-600">{review.quote}</p>
             </motion.article>

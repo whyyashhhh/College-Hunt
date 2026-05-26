@@ -37,13 +37,13 @@ export function FeatureCards() {
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.5, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
           whileHover={{ y: -6, scale: 1.01 }}
-          className="group rounded-[1.5rem] border border-white/10 bg-white/5 p-5 shadow-2xl shadow-black/20 backdrop-blur-xl"
+          className="group rounded-[1.5rem] border border-slate-200 bg-white p-5 shadow-2xl shadow-slate-200/40 backdrop-blur-xl"
         >
-          <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-cyan-400/20 bg-cyan-400/10 text-cyan-200 transition group-hover:scale-110">
+          <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-cyan-200 bg-cyan-50 text-cyan-600 transition group-hover:scale-110">
             <feature.icon className="h-5 w-5" />
           </div>
-          <h3 className="mt-5 text-lg font-semibold text-white">{feature.title}</h3>
-          <p className="mt-2 text-sm leading-6 text-zinc-400">{feature.description}</p>
+          <h3 className="mt-5 text-lg font-semibold text-zinc-900">{feature.title}</h3>
+          <p className="mt-2 text-sm leading-6 text-zinc-600">{feature.description}</p>
         </motion.article>
       ))}
     </section>

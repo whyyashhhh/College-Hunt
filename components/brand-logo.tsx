@@ -9,7 +9,7 @@ type BrandLogoProps = {
   showTagline?: boolean;
 };
 
-export function BrandLogo({ variant = 'full', theme = 'dark', className, href = '/', showTagline = false }: BrandLogoProps) {
+export function BrandLogo({ variant = 'full', theme = 'light', className, href = '/', showTagline = false }: BrandLogoProps) {
   const isLight = theme === 'light';
   const wrapper = cn('inline-flex items-center gap-3', variant === 'icon' && 'gap-0', className);
   const textColor = isLight ? 'text-zinc-900' : 'text-white';

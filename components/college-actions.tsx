@@ -28,7 +28,7 @@ export function CollegeActions({ collegeId }: Props) {
       <button
         type="button"
         onClick={shortlist}
-        className="inline-flex items-center justify-center gap-2 rounded-full bg-zinc-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-brand-600"
+        className="inline-flex items-center justify-center gap-2 rounded-full bg-zinc-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-zinc-800"
       >
         <BookmarkPlus className="h-4 w-4" />
         Add to Shortlist

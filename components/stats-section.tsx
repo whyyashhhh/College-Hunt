@@ -19,10 +19,10 @@ export function StatsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.35 }}
           transition={{ duration: 0.5, delay: index * 0.06, ease: [0.22, 1, 0.36, 1] }}
-          className="rounded-[1.5rem] border border-white/10 bg-zinc-950/70 p-5 shadow-2xl shadow-black/30 backdrop-blur-xl"
+          className="rounded-[1.5rem] border border-slate-200 bg-white p-5 shadow-2xl shadow-slate-200/40 backdrop-blur-xl"
         >
           <p className="text-xs uppercase tracking-[0.24em] text-zinc-500">{stat.label}</p>
-          <p className="mt-3 text-3xl font-semibold text-white">{stat.value}</p>
+          <p className="mt-3 text-3xl font-semibold text-zinc-900">{stat.value}</p>
         </motion.div>
       ))}
     </section>
